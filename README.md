@@ -1,92 +1,107 @@
-<p align="center"><img width="40%" src="logo/deeplearning-ai.png" /></p>
+Using Ngrok on Windows
+======================
 
---------------------------------------------------------------------------------
+In this document we show you how to submit your running application to the
+autograder.  The PHP autograder wants to "use" your application and test it
+by sending requests and checking the responses from your application.
 
-A series of online courses offered by [deeplearning.ai](https://www.deeplearning.ai/). I would like to say thanks to Prof. [**Andrew Ng**](www.andrewng.org) and his colleagues for spreading knowledge to normal people and great courses sincerely.  
+<center><a href="ngrok_mac/00-autograder.png" target="_blank"><img src="ngrok_mac/00-autograder.png" style="width:80%; border: 1px black solid;"></a></center>
+
+You cannot submit a URL like `http://localhost/homework/guess.php`
+because "localhost" only works for network conections originating *within*
+your computer and your computer protects your computer from
+incoming connectsion (i.e. they are blocked by a firewall).
+
+Unless you install your application on a server with Internet
+connectivity and a domain name, you need to use a program like `ngrok` to
+submit your program to the autograder.
+
+Applications like ngrok (or localtunnel) can make a temporary hole
+through your firewall and give you a temporary domain name you can
+use to submit your application to the Autograder.
+
+Ngrok is a "freemium" product that provided a low-level of service for free.
+The free level of the product should be sufficient for the purposes of
+autograding your assignment for this course.  If you cannot use ngrok
+at the free level, you should take a look at "localtunnel" which is
+a less-full featured product, but always free.
+
+Video Tutorial
+--------------
+
+You can watch a video demonstrating the use of Ngrok on Windows 10 at:
+
+<a href="https://www.youtube.com/watch?v=9gaaVbX0USI&list=PLlRFEj9H3Oj7FHbnXWviqQt0sKEK_hdKX" target="_blank">https://www.youtube.com/watch?v=9gaaVbX0USI</a>
+
+Installing Ngrok
+----------------
+
+First you need to download and install ngrok from
+<a href="https://www.ngrok.com" target="_blank">www.ngrok.com</a>.
+When you download the file it will probably end up in `Downloads`
+folder.  The ZIP file will probably automatically open so you can copy the 
+ngrok executable file to a folder on your system such as the Desktop.
+
+<center><a href="ngrok_win/01-downloads.png" target="_blank"><img src="ngrok_win/01-downloads.png" style="width:80%; border: 1px black solid;"></a></center>
+
+To run `ngrok` from the `Desktop` folder, start a Command prompt and type:
+
+    cd Desktop
+    ngrok http 80
+
+Ngrok should start up and show a user interface like this:
+
+<center><a href="ngrok_win/02-running.png" target="_blank"><img src="ngrok_win/02-running.png" style="width:90%; border: 1px black solid;"></a></center>
+
+You should note the temporary URL that ngrok has assigned you for use later.
+In this example, the temporary URL is `http://2a89d3c39.ngrok.io` - record
+that for later.
+
+You can place the `ngrok` executable command in any folder you like.  
+
+Checking Your Application Locally
+---------------------------------
+
+First make sure that you know that your application is running on localhost:
+
+<center><a href="ngrok_win/03-localhost.png" target="_blank"><img src="ngrok_win/03-localhost.png" style="width:90%; border: 1px black solid;"></a></center>
+
+Checking Your Application Via NGrok
+-----------------------------------
+
+Construct the ngrok url by removing the "http://localhost" and replace it
+with the ngrok-provided URL:
+
+    Local: http://localhost/php-solutions/assn/guess/guess.php
+    Ngrok: http://2a89d3c39.ngrok.io/php-solutions/assn/guess/guess.php
+
+Test that url in your browser.  The ngrok and local urls should
+return the exact same page.
+
+<center><a href="ngrok_win/04-ngrok.png" target="_blank"><img src="ngrok_win/04-ngrok.png" style="width:60%; border: 1px black solid;"></a></center>
+
+Once you have verifed your application is working, submit the ngrok url
+to the autograder.
+
+<center><a href="ngrok_mac/06-autograder.png" target="_blank"><img src="ngrok_mac/06-autograder.png" style="width:60%; border: 1px black solid;"></a></center>
+
+Interestingly, ngrok shows you as it is forwarding the various HTTP requests
+back and forth.
+
+<center><a href="ngrok_win/07-rrc.png" target="_blank"><img src="ngrok_win/07-rrc.png" style="width:60%; border: 1px black solid;"></a></center>
 
 
-### Reminder
--------------------
-the reason I would like to create this repository is purely for academic use (in case for my future use). I am really glad if you can use it as a reference and happy to discuss with you about issues related with the course even further deep learning techniques. 
+Closing Ngrok
+-------------
 
-**Please only use it as a reference**. The quiz and assignments are relatively easy to answer, hope you can have fun with the courses.  
+You can press `CTRL-C` in the ngrok terminal window or simply close the
+ngrok window.
 
-
-### 1. Neural Network and Deep Learning
-* Week 1
-	* [Quiz 1](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Neural%20Networks%20and%20Deep%20Learning/week1%20quiz.md)
-	* [Logistic Regression as a Neural Network](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Neural%20Networks%20and%20Deep%20Learning/Logistic%20Regression%20as%20a%20Neural%20Network)
-
-* Week 2
-	* [Quiz 2](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Neural%20Networks%20and%20Deep%20Learning/week2%20quiz.md)
-	* [Logistic Regression as a Neural Network](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Neural%20Networks%20and%20Deep%20Learning/Logistic%20Regression%20as%20a%20Neural%20Network)
-
-* Week 3
-	* [Quiz 3](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Neural%20Networks%20and%20Deep%20Learning/week3%20quiz.md)
-	* [Building your Deep Neural Network - Step by Step](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Neural%20Networks%20and%20Deep%20Learning/Building%20your%20Deep%20Neural%20Network%20-%20Step%20by%20Step)
-	* [Deep Neural Network Application-Image Classification](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Neural%20Networks%20and%20Deep%20Learning/Deep%20Neural%20Network%20Application-Image%20Classification)
-
-### 2. Improving Deep Neural Networks-Hyperparameter tuning, Regularization and Optimization
-* Week 1
-	* [Quiz 1](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1%20quiz.md)
-	* [Initialization](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/Initialization)
-	* [Regularization](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/Regularization)
-	* [Gradient Checking](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/Gradient%20Checking)
-
-* Week 2
-	* [Quiz 2](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2%20quiz.md)
-	* [Optimization](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/Optimization)
-
-* Week 3
-	* [Quiz 3](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week3%20quiz.md) 
-	* [Tensorflow](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Improving%20Deep%20Neural%20Networks-Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/Tensorflow)
-
-### 3. Structuring Machine Learning Projects
-* Week 1
-	* [Quiz 1](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Structuring%20Machine%20Learning%20Projects/week1%20quiz.md)
-
-* Week 2
-	* [Quiz 2](https://github.com/HeroKillerEver/coursera-deep-learning/blob/master/Structuring%20Machine%20Learning%20Projects/week2%20quiz.md)
-
-### 4. Convolutional Neural Network
-* Week 1
-	* [Quiz 1](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/week1%20quiz.md)
-	* [Convolutional Model- step by step](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/Convolutional%20Model-%20step%20by%20step)
-
-* Week 2
-	* [Quiz 2](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/week2%20quiz.md)
-	* [ResNets](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/ResNets)
-
-* Week 3
-	* [Quiz 3](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/week3%20quiz.md)
-	* [Car detection for Autonomous Driving](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/Car%20detection%20for%20Autonomous%20Driving)
-
-* Week 4
-	* [Quiz 4](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/week4%20quiz.md)
-	* [Neural Style Transfer](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/Neural%20Style%20Transfer)
-	* [Face Recognition](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Convolutional%20Neural%20Networks/Face%20Recognition)
+Remember that each time you start `ngrok`, it will assign you a different
+random address.
 
 
-### 5. Sequence Models
-* Week 1
-	* [Quiz 1](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/week1%20quiz.md)
-	* [Building a Recurrent Neural Network - Step by Step](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Building%20a%20Recurrent%20Neural%20Network%20-%20Step%20by%20Step)
-	* [Dinosaur Island -- Character-level language model](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Dinosaur%20Island%20--%20Character-level%20language%20model)
-	* [Jazz improvisation with LSTM](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Jazz%20improvisation%20with%20LSTM)
-
-* Week 2
-	* [Quiz 2](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/week2%20quiz.md)
-	* [Word Vector Representation](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Word%20Vector%20Representation)
-	* [Emojify](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Emojify)
-
-* Week 3
-	* [Quiz 3](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/week3%20quiz.md)
-	* [Machine Translation](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Machine%20Translation)
-	* [Trigger Word Detection](https://github.com/HeroKillerEver/coursera-deep-learning/tree/master/Sequence%20Models/Trigger%20word%20detection)
 
 
-<br/>
 
 
-### Author
-Haibin Yu/ [@HeroKillerEver](https://github.com/HeroKillerEver)
